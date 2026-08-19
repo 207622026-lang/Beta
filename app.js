@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAutoAnalysisAccordion();
   initDecisionAccordion();
   initDiaryLogs();
+  initExistentialDreadSection();
 });
 
 /* ==========================================================================
@@ -1692,3 +1693,83 @@ function initDecisionAccordion() {
     });
   });
 }
+
+/* ==========================================================================
+   Existential Dread Section (Angustia Existencial)
+   ========================================================================== */
+function initExistentialDreadSection() {
+  const steps = document.querySelectorAll('.cycle-step');
+  const defaultText = document.getElementById('cycle-default-text');
+  const detailText = document.getElementById('cycle-detail-text');
+  const detailTitle = document.getElementById('cycle-detail-title');
+  const detailDesc = document.getElementById('cycle-detail-desc');
+  const btnGotoReasons = document.getElementById('btn-goto-reasons');
+
+  if (!steps.length) return;
+
+  const stepDetails = {
+    "1": {
+      title: "1. Vazio Existencial",
+      desc: "Você sente que sua vida está sem direção, gerando uma sensação incômoda de falta e desconexão com suas rotinas diárias."
+    },
+    "2": {
+      title: "2. Desconforto",
+      desc: "A mente e o corpo rejeitam o silêncio do vazio, gerando uma inquietação interna, tédio ou ansiedade difícil de suportar."
+    },
+    "3": {
+      title: "3. Distração",
+      desc: "Para escapar do desconforto, você pega o celular, abre redes sociais, inicia um jogo ou consome estímulos rápidos."
+    },
+    "4": {
+      title: "4. Alívio",
+      desc: "Durante algumas horas, a enxurrada de dopamina faz com que você não precise pensar sobre as perguntas difíceis. O desconforto diminui."
+    },
+    "5": {
+      title: "5. Vazio Retorna",
+      desc: "Mas o problema de fundo continua existindo. Assim que a distração ou o estímulo externo acaba, a sensação de falta retorna."
+    },
+    "6": {
+      title: "6. Nova Distração",
+      desc: "Você se vê obrigado a procurar outra coisa para ocupar o espaço. O prazer deixa de ser uma escolha consciente e vira fuga."
+    }
+  };
+
+  steps.forEach(step => {
+    step.addEventListener('click', () => {
+      const stepNum = step.getAttribute('data-step');
+      const info = stepDetails[stepNum];
+
+      // Remove highlight from all steps
+      steps.forEach(s => {
+        s.style.borderColor = 'var(--border-color)';
+        s.style.background = 'rgba(255, 255, 255, 0.02)';
+      });
+
+      // Highlight active step
+      step.style.borderColor = 'var(--color-accent)';
+      step.style.background = 'rgba(178, 142, 147, 0.05)';
+
+      // Update explanation box
+      if (info) {
+        if (defaultText) defaultText.style.display = 'none';
+        if (detailText) {
+          detailText.style.display = 'block';
+          detailTitle.textContent = info.title;
+          detailDesc.textContent = info.desc;
+        }
+        playTone(550, 'sine', 0.05);
+      }
+    });
+  });
+
+  if (btnGotoReasons) {
+    btnGotoReasons.addEventListener('click', () => {
+      const targetCard = document.getElementById('existential-reasons-card');
+      if (targetCard) {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        playTone(550, 'sine', 0.08);
+      }
+    });
+  }
+}
+
