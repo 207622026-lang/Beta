@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDecisionAccordion();
   initDiaryLogs();
   initExistentialDreadSection();
+  initGriefSection();
 });
 
 /* ==========================================================================
@@ -1769,6 +1770,55 @@ function initExistentialDreadSection() {
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         playTone(550, 'sine', 0.08);
       }
+    });
+  }
+}
+
+function initGriefSection() {
+  const memoryInput = document.getElementById('grief-memory-input');
+  const btnLightCandle = document.getElementById('btn-light-candle');
+  const candleContainer = document.getElementById('candle-container');
+  const candleFlame = document.getElementById('candle-flame');
+  const memoryDisplay = document.getElementById('memory-display');
+  const btnResetGrief = document.getElementById('btn-reset-grief');
+
+  if (!btnLightCandle) return;
+
+  btnLightCandle.addEventListener('click', () => {
+    const memoryText = memoryInput.value.trim();
+    if (!memoryText) return;
+
+    // Show candle elements
+    candleContainer.style.display = 'flex';
+    if (candleFlame) {
+      candleFlame.classList.add('candle-pulse-animation');
+    }
+    if (memoryDisplay) {
+      memoryDisplay.textContent = `Em memória de: ${memoryText}`;
+      memoryDisplay.style.display = 'block';
+    }
+
+    // Hide input area and button
+    memoryInput.style.display = 'none';
+    btnLightCandle.style.display = 'none';
+    if (btnResetGrief) btnResetGrief.style.display = 'inline-block';
+
+    // Play a gentle audio tone for presence
+    playTone(330, 'triangle', 0.15); // soft breathing tone (E note)
+    
+    registerResilienceAction(`Acendi uma vela virtual no Espaço de Memória em silêncio: "Em memória de: ${memoryText}".`);
+  });
+
+  if (btnResetGrief) {
+    btnResetGrief.addEventListener('click', () => {
+      // Show input and hide candle
+      memoryInput.value = '';
+      memoryInput.style.display = 'block';
+      btnLightCandle.style.display = 'block';
+      candleContainer.style.display = 'none';
+      if (memoryDisplay) memoryDisplay.style.display = 'none';
+      btnResetGrief.style.display = 'none';
+      playTone(220, 'sine', 0.05);
     });
   }
 }
