@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScribbleArea();
   initDecisionWizard();
   initPhysiologyChecklist();
+  initFocusExplanation();
   initAccordion();
   initDignitySimulator();
   initPhilosophySection();
@@ -1822,4 +1823,30 @@ function initGriefSection() {
     });
   }
 }
+
+function initFocusExplanation() {
+  const trigger = document.getElementById('focus-explanation-trigger');
+  const content = document.getElementById('focus-explanation-content');
+  const arrow = document.getElementById('focus-explanation-arrow');
+  if (!trigger || !content || !arrow) return;
+
+  const parent = trigger.parentElement;
+
+  trigger.addEventListener('click', () => {
+    const isActive = parent.classList.contains('active');
+    
+    if (isActive) {
+      parent.classList.remove('active');
+      content.style.maxHeight = '0px';
+      arrow.style.transform = 'rotate(0deg)';
+    } else {
+      parent.classList.add('active');
+      content.style.maxHeight = '4000px';
+      arrow.style.transform = 'rotate(180deg)';
+      playTone(500, 'sine', 0.08);
+    }
+  });
+}
+
+
 
