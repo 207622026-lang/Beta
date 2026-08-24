@@ -122,40 +122,21 @@ body {
 }
 
 /* Header & Nav */
+/* Sticky Top Header */
 header {
-  position: fixed;
-  left: 0;
+  position: sticky;
   top: 0;
-  width: 280px;
-  height: 100vh;
-  z-index: 100;
+  z-index: 1000;
   background: rgba(7, 10, 16, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-right: 1px solid var(--border-color);
-  padding: 2.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.85rem 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  gap: 2rem;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-}
-
-header::-webkit-scrollbar {
-  width: 5px;
-}
-header::-webkit-scrollbar-track {
-  background: transparent;
-}
-header::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-}
-header::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
 }
 
 .logo {
@@ -164,12 +145,11 @@ header::-webkit-scrollbar-thumb:hover {
   gap: 0.75rem;
   text-decoration: none;
   color: var(--text-primary);
-  padding-left: 0.5rem;
 }
 
 .logo-icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   border-radius: var(--radius-sm);
   display: flex;
@@ -181,66 +161,60 @@ header::-webkit-scrollbar-thumb:hover {
 
 .logo-text {
   font-family: var(--font-title);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   background: linear-gradient(to right, #ffffff, var(--text-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.6rem;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .nav-link {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.55rem 0.85rem;
+  font-size: 0.84rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.35rem 0.75rem;
   border-radius: var(--radius-sm);
-  transition: var(--transition-fast);
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .nav-link:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: inset 0 0 0 1px var(--border-color);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .nav-link.active {
-  color: var(--color-primary-light);
-  background: rgba(126, 163, 131, 0.06);
-  box-shadow: inset 0 0 0 1px rgba(126, 163, 131, 0.25);
-  text-shadow: 0 0 8px rgba(157, 188, 161, 0.2);
-}
-
-.nav-group-header {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  margin-top: 1rem;
-  margin-bottom: 0.35rem;
-  padding-left: 0.85rem;
-}
-.nav-group-header:first-of-type {
-  margin-top: 0;
+  color: #ffffff;
+  background: rgba(126, 163, 131, 0.18);
+  border-color: rgba(126, 163, 131, 0.4);
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(126, 163, 131, 0.15);
 }
 
 /* Layout container */
 .container {
   max-width: 1200px;
-  width: auto;
-  margin-left: 280px;
-  padding: 0 3rem 0 2rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
   transition: all 0.3s ease;
 }
 
@@ -1648,71 +1622,10 @@ footer {
   animation: fadeIn 0.35s ease-out forwards;
 }
 
-@media (max-width: 1280px) and (min-width: 601px) {
-  .nav-links {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    max-width: calc(100vw - 200px);
-    padding: 0.2rem 0;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .nav-links::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-/* Mobile Responsiveness */
+/* Responsiveness */
 @media (max-width: 968px) {
-  header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: auto;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 0.85rem 1.25rem;
-    gap: 0.75rem;
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
-    background: rgba(7, 10, 16, 0.95);
-    overflow-y: visible;
-  }
-  
-  .logo {
-    padding-left: 0;
-    margin-bottom: 0;
-  }
-  
-  .nav-links {
-    flex-direction: row;
-    gap: 0.5rem;
-    overflow-x: auto;
-    width: 100%;
-    padding-bottom: 0.5rem;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .nav-links::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .nav-link {
-    flex-shrink: 0;
-    font-size: 0.8rem;
-    padding: 0.35rem 0.6rem;
-  }
-  
-  .nav-group-header {
-    display: none;
-  }
-  
   .container {
-    margin-left: 0;
-    padding: 0 1.5rem;
+    padding: 1.5rem 1rem;
     max-width: 100%;
   }
 
@@ -1814,4 +1727,446 @@ footer {
 }
 #candle-flame {
   transform-origin: bottom center;
+}
+
+
+
+/* ==========================================================================
+   Scroll Progress Bar & Back to Top Button
+   ========================================================================== */
+.scroll-progress-bar {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  z-index: 1001;
+  transition: width 0.1s ease-out;
+}
+
+@media (max-width: 968px) {
+  .scroll-progress-bar {
+    top: 60px;
+  }
+}
+
+.back-to-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(7, 10, 16, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
+  color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}
+
+.back-to-top-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   Readability & Typography
+   ========================================================================== */
+.readability-wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.readability-wrapper p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 1.6rem;
+}
+
+.readability-wrapper h3 {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.readability-wrapper h4 {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: 650;
+  color: #ffffff;
+  margin-top: 2rem;
+  margin-bottom: 0.85rem;
+}
+
+.reflection-callout {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 4px solid var(--color-primary-light);
+  padding: 1.5rem 1.75rem;
+  border-radius: var(--radius-sm);
+  margin: 2rem 0;
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.reflection-callout-muted {
+  background: rgba(255, 255, 255, 0.01);
+  border-left: 4px solid var(--border-color);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-sm);
+  margin: 1.75rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   "Leia quando..." Emotional Panel
+   ========================================================================== */
+.feelings-panel {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.feelings-panel-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.feelings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.feeling-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.feeling-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-primary-light);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Category Directory Cards (Home Section)
+   ========================================================================== */
+.home-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.directory-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.directory-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary-light);
+  box-shadow: 0 8px 30px rgba(126, 163, 131, 0.15);
+}
+
+.directory-card-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.directory-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.directory-card-action {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary-light);
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* ==========================================================================
+   Philosophy Subsection & Grid Cards
+   ========================================================================== */
+.philosophy-grid-custom {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.philosophy-card-custom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.philosophy-card-custom:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary-light);
+  box-shadow: 0 8px 30px rgba(126, 163, 131, 0.15);
+}
+
+.philosophy-card-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.philosophy-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.philosophy-card-action {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-primary-light);
+  margin-top: auto;
+}
+
+.btn-back-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 2.25rem;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.btn-back-index:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border-color: var(--color-primary-light);
+  transform: translateX(-3px);
+}
+
+/* ==========================================================================
+   Breadcrumbs & Related Reading
+   ========================================================================== */
+.breadcrumbs-bar {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumbs-bar a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs-bar a:hover {
+  color: var(--text-secondary);
+}
+
+.related-reading-box {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.related-reading-title {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.related-reading-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.related-link {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  height: 100%;
+}
+
+.related-link:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--color-primary-light);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.related-link span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Philosophy Experience Switcher (Pensamento vs Ficção)
+   ========================================================================== */
+.philosophy-exp-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.4rem;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ph-exp-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-title);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ph-exp-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ph-exp-btn.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(126, 163, 131, 0.25), rgba(94, 129, 244, 0.25));
+  border: 1px solid rgba(126, 163, 131, 0.4);
+  box-shadow: 0 0 15px rgba(126, 163, 131, 0.15);
+}
+
+.philosophy-experience-container {
+  animation: fadeIn 0.35s ease-out;
+}
+
+/* ==========================================================================
+   Color Thematic Borders
+   ========================================================================== */
+.theme-crisis {
+  border-top: 4px solid var(--color-danger) !important;
+}
+.theme-focus {
+  border-top: 4px solid var(--color-primary-light) !important;
+}
+.theme-philosophy {
+  border-top: 4px solid #ebcb8b !important;
+}
+.theme-grief {
+  border-top: 4px solid #88c0d0 !important;
+}
+.theme-love {
+  border-top: 4px solid #b48ead !important;
+}
+.theme-analysis {
+  border-top: 4px solid #d8dee9 !important;
 }

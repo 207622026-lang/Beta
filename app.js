@@ -2,6 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
+  initHamburgerMenu();
+  initScrollFeatures();
   initSensoryTimer();
   init24hPromise();
   initConstructiveAnger();
@@ -31,30 +33,240 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ==========================================================================
    Navigation (SPA Tabs)
    ========================================================================== */
-function initNavigation() {
-  const links = document.querySelectorAll('.nav-link');
+function navigateToSection(targetId) {
+  if (!targetId) return;
+  
   const sections = document.querySelectorAll('.section-block');
+  sections.forEach(section => {
+    section.classList.remove('active-section');
+    if (section.getAttribute('id') === targetId) {
+      section.classList.add('active-section');
+    }
+  });
 
-  links.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href').slice(1);
-
-      links.forEach(l => l.classList.remove('active'));
+  const allNavLinks = document.querySelectorAll('.nav-link');
+  allNavLinks.forEach(link => {
+    link.classList.remove('active');
+    const href = link.getAttribute('href');
+    if (href && href.slice(1) === targetId) {
       link.classList.add('active');
+    }
+  });
 
-      sections.forEach(section => {
-        section.classList.remove('active-section');
-        if (section.getAttribute('id') === targetId) {
-          section.classList.add('active-section');
+  if (targetId === 'philosophy-section' && typeof backToPhilosophyIndex === 'function') {
+    backToPhilosophyIndex();
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  playTone(620, 'sine', 0.05);
+}
+
+function initNavigation() {
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a');
+    if (!anchor) return;
+
+    const href = anchor.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const targetId = href.slice(1);
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection && targetSection.classList.contains('section-block')) {
+        e.preventDefault();
+        navigateToSection(targetId);
+      }
+    }
+  });
+}
+
+function initHamburgerMenu() {
+  const hamburgerBtn = document.getElementById('hamburger-btn-el');
+  const mobileMenu = document.getElementById('mobile-menu-overlay-el');
+
+  if (!hamburgerBtn || !mobileMenu) return;
+
+  hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    playTone(600, 'sine', 0.05);
+  });
+}
+
+function initScrollFeatures() {
+  const progressBar = document.getElementById('scroll-progress-bar-el');
+  const backToTopBtn = document.getElementById('back-to-top-btn-el');
+
+  window.addEventListener('scroll', () => {
+    if (progressBar) {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+      progressBar.style.width = percent + '%';
+    }
+
+    if (backToTopBtn) {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    }
+  });
+
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      playTone(700, 'sine', 0.08);
+    });
+  }
+}
+
+/* ==========================================================================
+   Filosofia de Vida (Duas Experiências: Pensamento e Ficção)
+   ========================================================================== */
+let currentPhilosophyExperience = 'thought';
+
+function switchPhilosophyExperience(expType) {
+  currentPhilosophyExperience = expType;
+  
+  const btnThought = document.getElementById('btn-ph-thought');
+  const btnFiction = document.getElementById('btn-ph-fiction');
+  const expThought = document.getElementById('ph-experience-thought');
+  const expFiction = document.getElementById('ph-experience-fiction');
+  
+  if (btnThought && btnFiction) {
+    btnThought.classList.toggle('active', expType === 'thought');
+    btnFiction.classList.toggle('active', expType === 'fiction');
+  }
+
+  if (expThought && expFiction) {
+    if (expType === 'thought') {
+      expThought.style.display = 'block';
+      expFiction.style.display = 'none';
+    } else {
+      expThought.style.display = 'none';
+      expFiction.style.display = 'block';
+    }
+  }
+
+  backToPhilosophyIndex();
+  playTone(550, 'sine', 0.05);
+}
+
+function openPhilosophyStory(storyId) {
+  // Oculta seletor de experiência e listas
+  const switcher = document.getElementById('philosophy-exp-switcher-el');
+  if (switcher) switcher.style.display = 'none';
+
+  const expThought = document.getElementById('ph-experience-thought');
+  const expFiction = document.getElementById('ph-experience-fiction');
+  if (expThought) expThought.style.display = 'none';
+  if (expFiction) expFiction.style.display = 'none';
+
+  const stories = document.querySelectorAll('.philosophy-story-detail');
+  stories.forEach(story => {
+    story.style.display = 'none';
+  });
+
+  const targetStory = document.getElementById(storyId);
+  if (targetStory) {
+    targetStory.style.display = 'block';
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  playTone(700, 'sine', 0.05);
+}
+
+function backToPhilosophyIndex() {
+  const stories = document.querySelectorAll('.philosophy-story-detail');
+  stories.forEach(story => {
+    story.style.display = 'none';
+  });
+
+  const switcher = document.getElementById('philosophy-exp-switcher-el');
+  if (switcher) switcher.style.display = 'flex';
+
+  const expThought = document.getElementById('ph-experience-thought');
+  const expFiction = document.getElementById('ph-experience-fiction');
+
+  if (currentPhilosophyExperience === 'thought') {
+    if (expThought) expThought.style.display = 'block';
+    if (expFiction) expFiction.style.display = 'none';
+  } else {
+    if (expThought) expThought.style.display = 'none';
+    if (expFiction) expFiction.style.display = 'block';
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  playTone(600, 'sine', 0.05);
+}
+
+function initPhilosophySection() {
+  // Filter chips handler for thought experience
+  const thoughtChips = document.querySelectorAll('#philosophy-filter-container-thought .filter-chip-ph');
+  const thoughtCards = document.querySelectorAll('#philosophy-index-grid-thought .philosophy-card-custom');
+  
+  thoughtChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      thoughtChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.getAttribute('data-filter');
+      
+      thoughtCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter || !cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
         }
       });
+      playTone(500, 'sine', 0.04);
+    });
+  });
 
-      window.scrollTo(0, 0);
-      playTone(620, 'sine', 0.05);
+  // Filter chips handler for fiction experience
+  const fictionChips = document.querySelectorAll('#philosophy-filter-container-fiction .filter-chip-ph');
+  const fictionCards = document.querySelectorAll('#philosophy-index-grid-fiction .philosophy-card-custom');
+  
+  fictionChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      fictionChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.getAttribute('data-filter');
+      
+      fictionCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter || !cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      playTone(500, 'sine', 0.04);
+    });
+  });
+
+  // Mark as read buttons
+  const markReadButtons = document.querySelectorAll('.philosophy-story-detail .btn-mark-read');
+  markReadButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const title = btn.getAttribute('data-title') || 'Reflexão Filosófica';
+      btn.disabled = true;
+      btn.textContent = 'Concluído ✓';
+      btn.classList.remove('btn-secondary');
+      btn.classList.add('btn-primary');
+      
+      registerResilienceAction(`Concluí a leitura e reflexão: "${title}".`);
+      showToast(`Reflexão "${title}" gravada no Diário!`);
+      playTone(660, 'sine', 0.25);
+      triggerConfetti();
     });
   });
 }
+
+window.openPhilosophyStory = openPhilosophyStory;
+window.backToPhilosophyIndex = backToPhilosophyIndex;
+window.switchPhilosophyExperience = switchPhilosophyExperience;
+
 
 /* ==========================================================================
    Notification Toast
@@ -811,24 +1023,8 @@ function updateToxicityGauge() {
    Seção 5: Filosofia de Vida & Escolhas (Filtros & Marcar como Lido)
    ========================================================================== */
 function initPhilosophySection() {
-  const items = document.querySelectorAll('#philosophy-accordion .philosophy-item');
   const chips = document.querySelectorAll('.filter-chip-ph');
-
-  // Accordion Expand/Collapse
-  items.forEach(item => {
-    const trigger = item.querySelector('.philosophy-trigger');
-    trigger.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      
-      // Close all active philosophy items
-      items.forEach(i => i.classList.remove('active'));
-
-      if (!isActive) {
-        item.classList.add('active');
-        playTone(550, 'sine', 0.08);
-      }
-    });
-  });
+  const cards = document.querySelectorAll('.philosophy-card-custom');
 
   // Category Filtering
   chips.forEach(chip => {
@@ -838,11 +1034,12 @@ function initPhilosophySection() {
 
       const filter = chip.getAttribute('data-filter');
 
-      items.forEach(item => {
-        if (filter === 'all' || item.getAttribute('data-category') === filter) {
-          item.style.display = 'block';
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          card.style.display = 'flex';
         } else {
-          item.style.display = 'none';
+          card.style.display = 'none';
         }
       });
 
@@ -854,7 +1051,7 @@ function initPhilosophySection() {
   const readButtons = document.querySelectorAll('.btn-mark-read');
   readButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // prevent accordion collapse
+      e.stopPropagation();
       const title = btn.getAttribute('data-title');
       
       playTone(587.33, 'sine', 0.2);
