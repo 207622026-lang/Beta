@@ -44,7 +44,7 @@ function navigateToSection(targetId) {
     }
   });
 
-  const allNavLinks = document.querySelectorAll('.nav-link');
+  const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
   allNavLinks.forEach(link => {
     link.classList.remove('active');
     const href = link.getAttribute('href');
@@ -56,6 +56,9 @@ function navigateToSection(targetId) {
   if (targetId === 'philosophy-section' && typeof backToPhilosophyIndex === 'function') {
     backToPhilosophyIndex();
   }
+
+  // Close mobile drawer if open
+  closeMobileMenu();
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
   playTone(620, 'sine', 0.05);
@@ -79,16 +82,39 @@ function initNavigation() {
   });
 }
 
+function closeMobileMenu() {
+  const hamburgerBtn = document.getElementById('hamburger-btn-el');
+  const mobileMenu = document.getElementById('mobile-menu-overlay-el');
+  if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+  if (mobileMenu) mobileMenu.classList.remove('active');
+}
+
 function initHamburgerMenu() {
   const hamburgerBtn = document.getElementById('hamburger-btn-el');
   const mobileMenu = document.getElementById('mobile-menu-overlay-el');
+  const closeBtn = document.getElementById('mobile-menu-close-btn');
 
   if (!hamburgerBtn || !mobileMenu) return;
 
-  hamburgerBtn.addEventListener('click', () => {
-    hamburgerBtn.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
+  hamburgerBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isActive = hamburgerBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('active', isActive);
     playTone(600, 'sine', 0.05);
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMobileMenu();
+      playTone(520, 'sine', 0.04);
+    });
+  }
+
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) {
+      closeMobileMenu();
+    }
   });
 }
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -16,53 +16,87 @@
   <!-- Confetti Canvas -->
   <canvas id="confetti-canvas"></canvas>
 
-  <!-- Sticky Header -->
+  <!-- Sticky Top Header -->
   <header>
-    <a href="#" class="logo" id="logo-el">
-      <div class="logo-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        </svg>
-      </div>
-      <span class="logo-text">Um lugar para pensar</span>
-    </a>
-    <nav class="nav-links">
-      <a href="#crisis-section" class="nav-link active" id="nav-crisis-btn">Protocolo de Crise</a>
-      <a href="#decision-section" class="nav-link" id="nav-decision-btn">Decisão Lógica</a>
-      <a href="#motivation-section" class="nav-link" id="nav-motivation-btn">Fisiologia & Foco</a>
-      <a href="#provocation-section" class="nav-link" id="nav-provocation-btn">Dignidade & Chat</a>
-      <a href="#complications-section" class="nav-link" id="nav-complications-btn">Pessoas Complicadas</a>
-      <a href="#hard-truths-section" class="nav-link" id="nav-hard-truths-btn">Verdades Duras</a>
-      <a href="#auto-analysis-section" class="nav-link" id="nav-auto-analysis-btn">Auto-análise</a>
-      <a href="#love-section" class="nav-link" id="nav-love-btn">Relacionamentos</a>
-      <a href="#philosophy-section" class="nav-link" id="nav-philosophy-btn">Filosofia de Vida</a>
-      <a href="#existential-dread-section" class="nav-link" id="nav-existential-dread-btn">Angústia Existencial</a>
-      <a href="#grief-section" class="nav-link" id="nav-grief-btn">Espaço do Luto</a>
-      <a href="#diary-section" class="nav-link" id="nav-diary-btn">Diário</a>
-      <a href="#credits-section" class="nav-link" id="nav-credits-btn">Créditos</a>
-    </nav>
+    <div class="header-inner">
+      <a href="#" class="logo" id="logo-el" onclick="navigateToSection('crisis-section'); return false;">
+        <div class="logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <span class="logo-text">Um lugar para pensar</span>
+      </a>
+
+      <!-- Botão Hambúrguer Mobile -->
+      <button class="hamburger-btn" id="hamburger-btn-el" aria-label="Abrir Menu de Navegação">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- Navegação Desktop -->
+      <nav class="nav-links desktop-nav">
+        <a href="#crisis-section" class="nav-link active" id="nav-crisis-btn">Protocolo de Crise</a>
+        <a href="#decision-section" class="nav-link" id="nav-decision-btn">Decisão Lógica</a>
+        <a href="#motivation-section" class="nav-link" id="nav-motivation-btn">Fisiologia & Foco</a>
+        <a href="#provocation-section" class="nav-link" id="nav-provocation-btn">Dignidade & Chat</a>
+        <a href="#complications-section" class="nav-link" id="nav-complications-btn">Pessoas Complicadas</a>
+        <a href="#hard-truths-section" class="nav-link" id="nav-hard-truths-btn">Verdades Duras</a>
+        <a href="#auto-analysis-section" class="nav-link" id="nav-auto-analysis-btn">Auto-análise</a>
+        <a href="#love-section" class="nav-link" id="nav-love-btn">Relacionamentos</a>
+        <a href="#philosophy-section" class="nav-link" id="nav-philosophy-btn">Filosofia de Vida</a>
+        <a href="#existential-dread-section" class="nav-link" id="nav-existential-dread-btn">Angústia Existencial</a>
+        <a href="#grief-section" class="nav-link" id="nav-grief-btn">Espaço do Luto</a>
+        <a href="#diary-section" class="nav-link" id="nav-diary-btn">Diário</a>
+        <a href="#credits-section" class="nav-link" id="nav-credits-btn">Créditos</a>
+      </nav>
+    </div>
   </header>
+
+  <!-- Mobile Menu Overlay / Drawer -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay-el">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <div class="logo-icon" style="width: 26px; height: 26px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <span class="mobile-menu-title">Seções do Portal</span>
+        </div>
+        <button class="mobile-menu-close" id="mobile-menu-close-btn" aria-label="Fechar Menu">✕</button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="#crisis-section" class="mobile-nav-link active"><span class="mobile-nav-icon">🚨</span> Protocolo de Crise</a>
+        <a href="#decision-section" class="mobile-nav-link"><span class="mobile-nav-icon">⚖️</span> Decisão Lógica</a>
+        <a href="#motivation-section" class="mobile-nav-link"><span class="mobile-nav-icon">⚡</span> Fisiologia & Foco</a>
+        <a href="#provocation-section" class="mobile-nav-link"><span class="mobile-nav-icon">🛡️</span> Dignidade & Chat</a>
+        <a href="#complications-section" class="mobile-nav-link"><span class="mobile-nav-icon">🤝</span> Pessoas Complicadas</a>
+        <a href="#hard-truths-section" class="mobile-nav-link"><span class="mobile-nav-icon">💡</span> Verdades Duras</a>
+        <a href="#auto-analysis-section" class="mobile-nav-link"><span class="mobile-nav-icon">🔍</span> Auto-análise</a>
+        <a href="#love-section" class="mobile-nav-link"><span class="mobile-nav-icon">❤️</span> Relacionamentos</a>
+        <a href="#philosophy-section" class="mobile-nav-link"><span class="mobile-nav-icon">🏛️</span> Filosofia de Vida</a>
+        <a href="#existential-dread-section" class="mobile-nav-link"><span class="mobile-nav-icon">🌌</span> Angústia Existencial</a>
+        <a href="#grief-section" class="mobile-nav-link"><span class="mobile-nav-icon">🕯️</span> Espaço do Luto</a>
+        <a href="#diary-section" class="mobile-nav-link"><span class="mobile-nav-icon">📓</span> Diário Pessoal</a>
+        <a href="#credits-section" class="mobile-nav-link"><span class="mobile-nav-icon">✨</span> Créditos</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Content Container -->
   <main class="container">
 
-    <!-- HERO SECTION: MANIFESTO DE AUTOAJUDA UNIFICADA -->
-    <section class="hero-manifesto-card glass-card" style="margin-bottom: 2.5rem;">
-      <h1 class="manifesto-title">Um lugar para pensar</h1>
-      <p class="manifesto-quote">
-        "Você não precisa ter todas as respostas. Às vezes, precisa apenas de um lugar para organizar aquilo que está acontecendo dentro da sua cabeça."
-      </p>
-      <div class="manifesto-badge">
-        Este site existe para quando pensar sozinho não é suficiente — e para quando a cabeça está cheia demais e você não sabe por onde começar.
-      </div>
-    </section>
-
-    <!-- SEÇÃO 1: PROTOCOLO DE CRISE (MOTIVOS PARA VIVER) -->
+    <!-- SEÇÃO 1: PROTOCOLO DE CRISE (ABA INICIAL) -->
     <section class="section-block active-section" id="crisis-section">
       <div class="section-header">
         <span class="section-tag">Ação Imediata</span>
         <h2 class="section-title">Protocolo de Crise</h2>
-        <p class="section-subtitle">Para quando o sofrimento mental parecer insuportável e pensar sozinho não for suficiente.</p>
+        <p class="section-subtitle" style="font-style: italic; font-size: 1.02rem; color: #ffffff; max-width: 620px; margin: 0 auto; line-height: 1.6;">
+          "Você não precisa ter todas as respostas. Às vezes, precisa apenas de um lugar para organizar aquilo que está acontecendo dentro da sua cabeça."
+        </p>
       </div>
 
       <!-- Carta de Acolhimento Realista -->
@@ -2454,28 +2488,19 @@
         <!-- Filter chips container Fiction -->
         <div class="filter-container" id="philosophy-filter-container-fiction">
           <button class="filter-chip-ph active" data-filter="all">Todos</button>
-          <button class="filter-chip-ph" data-filter="presence">Vazio & Presença</button>
-          <button class="filter-chip-ph" data-filter="grief">Luto & Impermanência</button>
+          <button class="filter-chip-ph" data-filter="existential">Existência & Sentido</button>
+          <button class="filter-chip-ph" data-filter="grief">Luto & Presença</button>
         </div>
 
         <!-- Grid de Cards de Ficção -->
         <div class="philosophy-grid-custom" id="philosophy-index-grid-fiction">        
-          <div class="glass-card philosophy-card-custom" data-category="presence" onclick="openPhilosophyStory('story-midnight-gospel-void')">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <span style="font-size: 1.6rem;">🧘</span>
-              <span style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; color: var(--color-accent); background: rgba(178, 142, 147, 0.12); padding: 0.2rem 0.6rem; border-radius: 20px; border: 1px solid rgba(178, 142, 147, 0.25);">T1:E5 • Turtles of the Eclipse</span>
-            </div>
-            <h3 class="philosophy-card-title">The Midnight Gospel: O Vazio e a Presença</h3>
-            <p class="philosophy-card-desc">“Pare de lutar contra. Enfrente o vazio. Apenas esteja aqui agora.” Uma reflexão sobre a fuga da mente, o silêncio e a coragem de habitar o presente.</p>
-            <span class="philosophy-card-action">Ler reflexão →</span>
-          </div>        
           <div class="glass-card philosophy-card-custom" data-category="grief" onclick="openPhilosophyStory('story-midnight-gospel')">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
               <span style="font-size: 1.6rem;">🌌</span>
-              <span style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; color: var(--color-accent); background: rgba(178, 142, 147, 0.12); padding: 0.2rem 0.6rem; border-radius: 20px; border: 1px solid rgba(178, 142, 147, 0.25);">T1:E8 • Mouse of Silver</span>
+              <span style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; color: var(--color-accent); background: rgba(178, 142, 147, 0.12); padding: 0.2rem 0.6rem; border-radius: 20px; border: 1px solid rgba(178, 142, 147, 0.25);">Série de Animação</span>
             </div>
-            <h3 class="philosophy-card-title">The Midnight Gospel: O Ciclo e a Perda</h3>
-            <p class="philosophy-card-desc">Quando amar também significa aceitar que vai acabar: o ciclo da vida, a dor da perda e a coragem de amar na impermanência.</p>
+            <h3 class="philosophy-card-title">The Midnight Gospel</h3>
+            <p class="philosophy-card-desc">O vazio, a presença e a coragem de amar na impermanência: reflexões profundas sobre enfrentar o vazio e aceitar o ciclo da vida.</p>
             <span class="philosophy-card-action">Ler reflexão →</span>
           </div>        
           <div class="glass-card philosophy-card-custom" style="opacity: 0.8; border-style: dashed; cursor: default;">
@@ -2959,29 +2984,31 @@
            PÁGINAS DE DETALHE DE HISTÓRIAS (FICÇÃO)
            ======================================================================== -->
 
-      <!-- Detalhe da Obra: The Midnight Gospel - O Vazio e a Presença (T1:E5) -->
-      <div class="philosophy-story-detail" id="story-midnight-gospel-void" style="display: none;" data-category="presence">
+      <!-- Detalhe da Obra Unificada: The Midnight Gospel -->
+      <div class="philosophy-story-detail" id="story-midnight-gospel" style="display: none;" data-category="grief">
         <button class="btn-back-index" onclick="backToPhilosophyIndex()"><span style="font-size: 1.1rem;">←</span> Voltar para a Filosofia</button>
         <div class="breadcrumbs-bar">
-          <a href="#philosophy-section" onclick="backToPhilosophyIndex()">Filosofia</a> <span>/</span> <span>Filosofia na Ficção</span> <span>/</span> <span>The Midnight Gospel: O Vazio e a Presença</span>
+          <a href="#philosophy-section" onclick="backToPhilosophyIndex()">Filosofia</a> <span>/</span> <span>Filosofia na Ficção</span> <span>/</span> <span>The Midnight Gospel</span>
         </div>
         
         <div class="readability-wrapper">
           <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(178, 142, 147, 0.15); border: 1px solid rgba(178, 142, 147, 0.35); padding: 0.35rem 0.85rem; border-radius: 50px; font-size: 0.8rem; color: var(--color-accent); font-weight: 700; margin-bottom: 1.25rem;">
-            <span>🧘</span> Temporada 1 • Episódio 5: "Turtles of the Eclipse"
+            <span>🌌</span> The Midnight Gospel • Explorações Existenciais
           </div>
 
-          <!-- CITAÇÃO EM DESTAQUE ABSOLUTO -->
+          <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">🌌 The Midnight Gospel: O Vazio, a Presença e o Ciclo da Vida</h2>
+
+          <!-- PARTE 1: CITAÇÃO EM DESTAQUE ABSOLUTO (T1:E5) -->
           <div style="background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 3rem 1.75rem; margin: 1rem 0 2.5rem 0; text-align: center; box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);">
             <p style="font-family: var(--font-title); font-size: 1.6rem; font-weight: 700; color: #ffffff; line-height: 1.5; margin: 0 0 1.25rem 0; letter-spacing: -0.01em;">
               “Pare de lutar contra. Enfrente o vazio. Apenas esteja aqui agora.”
             </p>
             <p style="font-size: 0.9rem; color: var(--color-accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;">
-              The Midnight Gospel
+              The Midnight Gospel — "Turtles of the Eclipse" (T1:E5)
             </p>
           </div>
 
-          <!-- REFLEXÃO -->
+          <!-- REFLEXÃO PARTE 1: O VAZIO E A PRESENÇA -->
           <h4 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-top: 1.5rem; margin-bottom: 0.75rem;">A armadilha da fuga constante</h4>
           <p>Quando nos deparamos com o desconforto, com a angústia ou com o silêncio do vazio existencial, o primeiro impulso da nossa mente é quase sempre lutar ou fugir.</p>
           <p>Nós pegamos o celular. Rolamos feeds infinitos. Buscamos estímulos rápidos, comida, compras, discussões mentais ou qualquer ruído que nos impeça de sentir o que está acontecendo por dentro. Tentamos desesperadamente preencher cada segundo de silêncio porque temos medo daquilo que o vazio pode revelar sobre nós mesmos.</p>
@@ -2989,65 +3016,20 @@
 
           <h4 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-top: 1.75rem; margin-bottom: 0.75rem;">Enfrente o vazio sem se afogar nele</h4>
           <p>Enfrentar o vazio não significa se render ao desespero, nem acreditar nas histórias catastróficas que a mente ansiosa tenta inventar.</p>
-          <p>Significa simplesmente ter a coragem de parar. Sentar com o desconforto por alguns minutos. Respirar. Observar a sensação física no corpo sem tentar consertá-la, julgá-la ou suprimi-la imediatamente. Quando você para de resistir ao desconforto, percebe que ele é apenas uma onda passageira — desconfortável, mas suportável.</p>
+          <p>Significa simplesmente ter a coragem de parar. Sentar com o desconforto por alguns minutos. Respirar. Observar a sensação física no corpo sem tentar consertá-la, julgá-la ou suprimi-la imediatamente. Quando você para de resistir ao desconforto, percebe que ele é apenas uma onda passageira — desconfortável, mas perfeitamente suportável.</p>
 
           <h4 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-top: 1.75rem; margin-bottom: 0.75rem;">Apenas esteja aqui agora ("Be Here Now")</h4>
           <p>A maior parte da nossa angústia não vive no presente: vive na culpa pelo que já aconteceu ou no medo do que ainda pode acontecer no futuro.</p>
           <p>No momento exato em que você lê estas palavras, você está respirando. O chão sob seus pés é real. Este instante é a única coisa que você realmente possui. Quando você desiste da luta exaustiva contra a realidade e escolhe simplesmente habitar o presente, o peso imaginário do futuro perde a sua força.</p>
 
-          <blockquote style="border-left: 3px solid var(--color-accent); padding-left: 1.25rem; margin: 1.75rem 0; color: var(--text-primary); font-family: var(--font-title); font-size: 1.05rem; line-height: 1.65; font-weight: 600; display: flex; flex-direction: column; gap: 0.5rem;">
-            <span>A paz não surge quando você finalmente consegue eliminar todas as incertezas da vida.</span>
-            <span style="font-weight: 400; font-size: 0.95rem; color: var(--text-secondary);">A paz começa no momento exato em que você para de lutar contra a própria existência e escolhe estar presente, com tudo o que ela traz.</span>
-          </blockquote>
+          <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 3rem 0 2.5rem 0;">
 
-          <!-- Card de Referência da Obra Oficial -->
-          <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.75rem 0; display: flex; flex-direction: column; gap: 0.75rem;">
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-              <span style="font-weight: 700; color: #ffffff; font-size: 0.95rem;">📺 Sobre a Obra Original: The Midnight Gospel</span>
-              <a href="https://www.netflix.com/title/80987903" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.35rem; color: var(--color-primary-light); font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--border-color); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm); transition: all 0.2s ease;">
-                <span>Ver na Netflix</span> <span style="font-size: 0.8rem;">↗</span>
-              </a>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; margin: 0;">
-              No episódio <strong>"Turtles of the Eclipse"</strong> (T1:E5), Clancy visita uma prisão cósmica onde almas vivenciam mortes repetidas. O diálogo com Bob (dublado pelo professor budista Jason Louv) aborda o aprisionamento do ego, a meditação e o mantra clássico <em>"Be Here Now"</em> (Esteja Aqui Agora), popularizado por Ram Dass, como chave para transcender o ciclo do sofrimento.
-            </p>
-          </div>
-
-          <button class="btn btn-secondary btn-sm btn-mark-read" data-title="The Midnight Gospel — O Vazio e a Presença (Filosofia na Ficção)">Marcar como Reflexão Concluída</button>
-        
-          <div class="related-reading-box">
-            <h4 class="related-reading-title">Você chegou ao fim desta reflexão. Talvez queira continuar lendo:</h4>
-            <div class="related-reading-grid">
-              <a href="#existential-dread-section" class="related-link" data-target="existential-dread-section">
-                <span>Relacionado</span>
-                Angústia Existencial & Vazio
-              </a>
-              <a href="#crisis-section" class="related-link" data-target="crisis-section">
-                <span>Explorar</span>
-                Choque Sensorial de Presença
-              </a>
-              <a href="#philosophy-section" class="related-link" onclick="backToPhilosophyIndex(); event.preventDefault();">
-                <span>Voltar</span>
-                Outras Histórias de Filosofia
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Detalhe da Obra: The Midnight Gospel - Mouse of Silver (T1:E8) -->
-      <div class="philosophy-story-detail" id="story-midnight-gospel" style="display: none;" data-category="grief">
-        <button class="btn-back-index" onclick="backToPhilosophyIndex()"><span style="font-size: 1.1rem;">←</span> Voltar para a Filosofia</button>
-        <div class="breadcrumbs-bar">
-          <a href="#philosophy-section" onclick="backToPhilosophyIndex()">Filosofia</a> <span>/</span> <span>Filosofia na Ficção</span> <span>/</span> <span>The Midnight Gospel: O Ciclo e a Perda</span>
-        </div>
-        
-        <div class="readability-wrapper">
+          <!-- PARTE 2: QUANDO AMAR SIGNIFICA ACEITAR QUE VAI ACABAR (T1:E8) -->
           <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(178, 142, 147, 0.15); border: 1px solid rgba(178, 142, 147, 0.35); padding: 0.35rem 0.85rem; border-radius: 50px; font-size: 0.8rem; color: var(--color-accent); font-weight: 700; margin-bottom: 1rem;">
             <span>🎙️</span> Temporada 1 • Episódio 8: "Mouse of Silver"
           </div>
-          
-          <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">🌌 Quando amar também significa aceitar que vai acabar</h2>
+
+          <h3 style="font-family: var(--font-title); font-size: 1.35rem; font-weight: 700; color: #ffffff; margin-bottom: 1.25rem;">Quando amar também significa aceitar que vai acabar</h3>
 
           <p>Uma das coisas mais difíceis sobre amar alguém é que, em algum momento, precisamos lidar com a possibilidade de perder essa pessoa.</p>
           <p>A gente sabe disso.</p>
@@ -3107,11 +3089,11 @@
               </a>
             </div>
             <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; margin: 0;">
-              Criada por Pendleton Ward e Duncan Trussell, a série animada explora questões existenciais com diálogos reais extraídos do podcast <em>The Duncan Trussell Family Hour</em>. O episódio final, <strong>"Mouse of Silver"</strong> (T1:E8), é um diálogo real e comovente entre Duncan e sua mãe, Deneen Fendig, gravado pouco antes de seu falecimento em decorrência de um câncer terminal.
+              Criada por Pendleton Ward e Duncan Trussell, a série animada explora questões existenciais com diálogos reais extraídos do podcast <em>The Duncan Trussell Family Hour</em>. Os episódios <strong>"Turtles of the Eclipse"</strong> (T1:E5, sobre presença e meditação) e <strong>"Mouse of Silver"</strong> (T1:E8, um diálogo emocionante com sua mãe Deneen Fendig antes de seu falecimento) representam o coração filosófico da obra.
             </p>
           </div>
 
-          <button class="btn btn-secondary btn-sm btn-mark-read" data-title="The Midnight Gospel — Mouse of Silver (Filosofia na Ficção)">Marcar como Reflexão Concluída</button>
+          <button class="btn btn-secondary btn-sm btn-mark-read" data-title="The Midnight Gospel (Filosofia na Ficção)">Marcar como Reflexão Concluída</button>
         
           <div class="related-reading-box">
             <h4 class="related-reading-title">Você chegou ao fim desta reflexão. Talvez queira continuar lendo:</h4>
@@ -3122,7 +3104,7 @@
               </a>
               <a href="#existential-dread-section" class="related-link" data-target="existential-dread-section">
                 <span>Explorar</span>
-                Angústia Existencial & Sentido
+                Angústia Existencial & Vazio
               </a>
               <a href="#philosophy-section" class="related-link" onclick="backToPhilosophyIndex(); event.preventDefault();">
                 <span>Voltar</span>
@@ -3135,7 +3117,7 @@
 
     </section>
 
-    <!-- SEÃ‡ÃƒO 6: COMO LIDAR COM PESSOAS COMPLICADAS -->
+    <!-- SEÇÃO 6: COMO LIDAR COM PESSOAS COMPLICADAS -->
     <section class="section-block" id="complications-section">
       <div class="section-header">
         <span class="section-tag">Relações & Reciprocidade</span>
