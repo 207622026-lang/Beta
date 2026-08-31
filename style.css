@@ -2517,3 +2517,140 @@ footer {
     padding: 0.85rem 1rem;
   }
 }
+
+/* ==========================================================================
+   Philosophy Accordion (Rick and Morty & Story Modules)
+   ========================================================================== */
+.philosophy-accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin: 2rem 0;
+}
+
+.accordion-global-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.accordion-ctrl-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.accordion-ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: var(--color-primary-light);
+}
+
+.ph-accordion-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ph-accordion-item:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ph-accordion-item.active {
+  border-color: rgba(126, 163, 131, 0.4);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.ph-accordion-header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.ph-accordion-header:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ph-accordion-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.ph-accordion-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 50px;
+  width: fit-content;
+}
+
+.ph-accordion-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.ph-accordion-summary {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.ph-accordion-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  color: var(--color-primary-light);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ph-accordion-item.active .ph-accordion-icon {
+  transform: rotate(180deg);
+  background: rgba(126, 163, 131, 0.15);
+  border-color: var(--color-primary-light);
+}
+
+.ph-accordion-body {
+  display: none;
+  padding: 0 1.5rem 1.75rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.ph-accordion-item.active .ph-accordion-body {
+  display: block;
+  padding-top: 1.25rem;
+}

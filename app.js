@@ -2170,5 +2170,37 @@ function closeIOSModal() {
   if (iosModal) iosModal.style.display = 'none';
 }
 
+/* ==========================================================================
+   Philosophy Accordions Toggle & Controls
+   ========================================================================== */
+function togglePhilosophyAccordion(headerElem) {
+  const item = headerElem.closest('.ph-accordion-item');
+  if (!item) return;
+  item.classList.toggle('active');
+  const isNowActive = item.classList.contains('active');
+  headerElem.setAttribute('aria-expanded', isNowActive ? 'true' : 'false');
+}
+
+function expandAllPhilosophyAccordions(containerId) {
+  const container = containerId ? document.getElementById(containerId) : document;
+  const items = container.querySelectorAll('.ph-accordion-item');
+  items.forEach(item => {
+    item.classList.add('active');
+    const header = item.querySelector('.ph-accordion-header');
+    if (header) header.setAttribute('aria-expanded', 'true');
+  });
+}
+
+function collapseAllPhilosophyAccordions(containerId) {
+  const container = containerId ? document.getElementById(containerId) : document;
+  const items = container.querySelectorAll('.ph-accordion-item');
+  items.forEach(item => {
+    item.classList.remove('active');
+    const header = item.querySelector('.ph-accordion-header');
+    if (header) header.setAttribute('aria-expanded', 'false');
+  });
+}
+
+
 
 
