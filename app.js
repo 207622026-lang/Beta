@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initHamburgerMenu();
+  initPWA();
   initScrollFeatures();
   initSensoryTimer();
   init24hPromise();
@@ -2069,6 +2070,104 @@ function initFocusExplanation() {
       playTone(500, 'sine', 0.08);
     }
   });
+}
+
+/* ==========================================================================
+   PWA Installation & Shortcut Management
+   ========================================================================== */
+let deferredPrompt = null;
+
+function initPWA() {
+  // 1. Register Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((reg) => {
+          console.log('Service Worker registrado:', reg.scope);
+        })
+        .catch((err) => {
+          console.warn('Service Worker registro falhou:', err);
+        });
+    });
+  }
+
+  // 2. Check if already running in standalone mode (installed as app/shortcut)
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if (isStandalone) {
+    console.log('App executando em modo standalone (já instalado como atalho).');
+    hidePWAInstallUI();
+    return;
+  }
+
+  // 3. Listen for native beforeinstallprompt (Chrome, Edge no PC e Android)
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Show desktop & mobile install buttons
+    const desktopBtn = document.getElementById('pwa-install-btn-desktop');
+    const mobileBtn = document.getElementById('pwa-install-btn-mobile');
+    if (desktopBtn) desktopBtn.style.display = 'inline-flex';
+    if (mobileBtn) mobileBtn.style.display = 'flex';
+
+    // Show floating banner after 3.5s if not dismissed in session
+    const isDismissed = sessionStorage.getItem('pwa_banner_dismissed');
+    if (!isDismissed) {
+      setTimeout(() => {
+        const banner = document.getElementById('pwa-floating-banner-el');
+        if (banner && deferredPrompt) {
+          banner.style.display = 'flex';
+        }
+      }, 3500);
+    }
+  });
+
+  // 4. Listen for appinstalled
+  window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    hidePWAInstallUI();
+    console.log('Aplicativo instalado com sucesso na tela inicial!');
+  });
+}
+
+function triggerPWAInstall() {
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('Usuário aceitou a instalação do atalho.');
+        hidePWAInstallUI();
+      }
+      deferredPrompt = null;
+    });
+  } else if (isIOS) {
+    // Show iOS Safari instruction modal
+    const iosModal = document.getElementById('ios-install-modal-el');
+    if (iosModal) iosModal.style.display = 'flex';
+  } else {
+    // Helpful guide fallback for different browsers/OS
+    alert('Para fixar o atalho na sua Tela Inicial / Área de Trabalho:\n\n• No PC (Chrome / Edge): Clique no ícone "Instalar Aplicativo" (ou no menu ⋮ > "Instalar Um lugar para pensar").\n• No Celular (Android): Toque no menu do navegador (⋮) e selecione "Adicionar à tela inicial" ou "Instalar aplicativo".\n• No iPhone/iPad (Safari): Toque no botão Compartilhar (⎋) e depois em "Adicionar à Tela de Início".');
+  }
+}
+
+function hidePWAInstallUI() {
+  const banner = document.getElementById('pwa-floating-banner-el');
+  const desktopBtn = document.getElementById('pwa-install-btn-desktop');
+  if (banner) banner.style.display = 'none';
+  if (desktopBtn) desktopBtn.style.display = 'none';
+}
+
+function dismissPWABanner() {
+  const banner = document.getElementById('pwa-floating-banner-el');
+  if (banner) banner.style.display = 'none';
+  sessionStorage.setItem('pwa_banner_dismissed', 'true');
+}
+
+function closeIOSModal() {
+  const iosModal = document.getElementById('ios-install-modal-el');
+  if (iosModal) iosModal.style.display = 'none';
 }
 
 
