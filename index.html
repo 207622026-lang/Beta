@@ -60,9 +60,7 @@
         <a href="#grief-section" class="nav-link" id="nav-grief-btn">Espaço do Luto</a>
         <a href="#diary-section" class="nav-link" id="nav-diary-btn">Diário</a>
         <a href="#credits-section" class="nav-link" id="nav-credits-btn">Créditos</a>
-        <button class="btn-install-pwa" id="pwa-install-btn-desktop" onclick="triggerPWAInstall()" style="display: none;" title="Instalar aplicativo / Criar atalho no PC ou Celular">
-          <span>📲</span> Instalar App
-        </button>
+        <a href="#app-install-section" class="nav-link" id="nav-app-install-btn">Atalho</a>
       </nav>
     </div>
   </header>
@@ -95,6 +93,7 @@
         <a href="#grief-section" class="mobile-nav-link"><span class="mobile-nav-icon">🕯️</span> Espaço do Luto</a>
         <a href="#diary-section" class="mobile-nav-link"><span class="mobile-nav-icon">📓</span> Diário Pessoal</a>
         <a href="#credits-section" class="mobile-nav-link"><span class="mobile-nav-icon">✨</span> Créditos</a>
+        <a href="#app-install-section" class="mobile-nav-link"><span class="mobile-nav-icon">📲</span> Atalho</a>
       </div>
 
       <!-- Botão de Instalar / Criar Atalho no Drawer Mobile -->
@@ -4097,6 +4096,138 @@
         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; max-width: 700px; margin: 0 auto;">
           Reconhecer isso não te torna menor. É justamente o que permite que você se torne alguém melhor do que era ontem.
         </p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: INSTALAR APLICATIVO / CRIAR ATALHO -->
+    <section class="section-block" id="app-install-section">
+      <div class="section-header">
+        <span class="section-tag" style="background: rgba(126, 163, 131, 0.18); color: var(--color-primary-light); border-color: rgba(126, 163, 131, 0.4);">Acesso Rápido & Atalho</span>
+        <h2 class="section-title">📲 Instalar como Aplicativo</h2>
+        <p class="section-subtitle">Tenha este espaço sempre à mão direto na tela inicial do seu celular ou na área de trabalho do computador, com tela cheia e acesso instantâneo.</p>
+      </div>
+
+      <div class="pillars-layout" style="display: flex; flex-direction: column; gap: 2rem; max-width: 920px; margin: 0 auto;">
+        
+        <!-- Card 1: Botão de Ação Imediata -->
+        <div class="glass-card" style="border-left: 4px solid var(--color-primary-light); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.25rem; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, rgba(126, 163, 131, 0.08), rgba(94, 129, 244, 0.08));">
+          <div class="logo-icon" style="width: 52px; height: 52px; border-radius: 14px; box-shadow: 0 0 25px rgba(126, 163, 131, 0.35);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin-bottom: 0.35rem;">
+              Adicionar à Sua Tela Inicial
+            </h3>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 580px; margin: 0 auto; line-height: 1.6;">
+              Clique no botão abaixo para fixar o atalho no seu aparelho. Não ocupa memória do celular e funciona exatamente como um app nativo.
+            </p>
+          </div>
+
+          <button class="btn btn-primary" onclick="triggerPWAInstall()" style="padding: 0.85rem 2rem; font-size: 1.05rem; font-weight: 700; border-radius: var(--radius-sm); box-shadow: 0 4px 20px rgba(126, 163, 131, 0.3); display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer;">
+            <span>📲</span> Instalar Aplicativo Agora
+          </button>
+
+          <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">
+            ✓ 100% Gratuito • Sem Downloads Pesados • Seguro & Privado
+          </span>
+        </div>
+
+        <!-- Card 2: Passo a Passo Visual por Aparelho -->
+        <div class="glass-card" style="border-left: 4px solid #88c0d0; display: flex; flex-direction: column; gap: 1.5rem;">
+          <h3 style="font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+            <span>📖</span> Como Instalar no Seu Dispositivo (Passo a Passo)
+          </h3>
+
+          <!-- Plataforma 1: Android -->
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span style="font-size: 1.3rem;">📱</span>
+              <h4 style="font-family: var(--font-title); font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">No Celular Android (Chrome / Samsung Internet / Edge)</h4>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; padding-left: 0.5rem;">
+              <div><strong>1.</strong> Toque no botão verde acima <em>"Instalar Aplicativo Agora"</em>.</div>
+              <div><strong>2.</strong> Se o aviso não abrir automaticamente, toque nos <strong>três pontinhos (⋮)</strong> no canto superior direito do seu navegador.</div>
+              <div><strong>3.</strong> Selecione a opção <strong>"Instalar aplicativo"</strong> ou <strong>"Adicionar à tela inicial"</strong>.</div>
+              <div><strong>4.</strong> Confirme em <strong>"Instalar"</strong>. O ícone de escudo aparecerá na tela do seu celular junto com os seus outros aplicativos!</div>
+            </div>
+          </div>
+
+          <!-- Plataforma 2: iPhone / iPad -->
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span style="font-size: 1.3rem;">🍎</span>
+              <h4 style="font-family: var(--font-title); font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">No iPhone ou iPad (Navegador Safari da Apple)</h4>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; padding-left: 0.5rem;">
+              <div><strong>1.</strong> Abra este site no <strong>Safari</strong> do seu iPhone.</div>
+              <div><strong>2.</strong> Toque no botão de <strong>Compartilhar</strong> (ícone do quadrado com a seta para cima <strong style="color: #ffffff; font-size: 1.1rem;">⎋</strong> na barra inferior do Safari).</div>
+              <div><strong>3.</strong> Role para baixo nas opções e toque em <strong style="color: #ffffff;">"Adicionar à Tela de Início"</strong> (ícone <strong style="color: #ffffff;">➕</strong>).</div>
+              <div><strong>4.</strong> Toque em <strong>"Adicionar"</strong> no canto superior direito. Pronto! O app fica na sua tela de início com ícone próprio.</div>
+            </div>
+          </div>
+
+          <!-- Plataforma 3: Computador / PC -->
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span style="font-size: 1.3rem;">💻</span>
+              <h4 style="font-family: var(--font-title); font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">No Computador / Notebook (Google Chrome, Edge, Opera, Brave)</h4>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; padding-left: 0.5rem;">
+              <div><strong>1.</strong> Clique no botão verde acima <em>"Instalar Aplicativo Agora"</em>.</div>
+              <div><strong>2.</strong> Ou olhe para a <strong>barra de endereço</strong> no topo do navegador (onde fica o link): você verá um ícone de computadorzinho com uma seta para baixo (💻⬇️).</div>
+              <div><strong>3.</strong> Clique no ícone e confirme em <strong>"Instalar"</strong>.</div>
+              <div><strong>4.</strong> O site será aberto em uma janela própria de aplicativo e um atalho direto será criado na sua <strong>Área de Trabalho</strong>!</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Card 3: Vantagens de Usar Como Aplicativo -->
+        <div class="glass-card" style="border-left: 4px solid var(--color-secondary); display: flex; flex-direction: column; gap: 1.25rem;">
+          <h3 style="font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+            <span>✨</span> Por Que Vale a Pena Instalar?
+          </h3>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+            
+            <div style="background: rgba(255,255,255,0.015); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <span style="font-size: 1.4rem;">⚡</span>
+              <strong style="color: #ffffff; font-size: 0.95rem;">Abertura Instantânea</strong>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                Abre com um toque na tela inicial, sem precisar abrir navegador e digitar endereço todas as vezes.
+              </p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.015); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <span style="font-size: 1.4rem;">🔕</span>
+              <strong style="color: #ffffff; font-size: 0.95rem;">Leitura Sem Distrações</strong>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                Modo tela cheia sem barras de navegação ou abas abertas competindo pela sua atenção.
+              </p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.015); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <span style="font-size: 1.4rem;">✈️</span>
+              <strong style="color: #ffffff; font-size: 0.95rem;">Funciona Offline</strong>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                Todas as ferramentas e reflexões ficam salvas para você ler mesmo no avião ou sem internet.
+              </p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.015); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <span style="font-size: 1.4rem;">🔒</span>
+              <strong style="color: #ffffff; font-size: 0.95rem;">Privacidade Total</strong>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                Seus registros do Diário Pessoal e reflexões ficam gravados apenas na memória do seu próprio aparelho.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
 
