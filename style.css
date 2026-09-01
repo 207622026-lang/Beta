@@ -247,6 +247,166 @@ header {
   box-shadow: 0 0 12px rgba(126, 163, 131, 0.15);
 }
 
+/* ==========================================================================
+   Navigation Dropdowns & Grouped Layers
+   ========================================================================== */
+.nav-dropdown {
+  position: relative;
+  display: inline-flex;
+}
+
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.015);
+  font-family: inherit;
+  outline: none;
+}
+
+.dropdown-chevron {
+  font-size: 0.7rem;
+  transition: transform 0.25s ease;
+  color: var(--text-muted);
+}
+
+.nav-dropdown:hover .dropdown-chevron,
+.nav-dropdown.is-open .dropdown-chevron {
+  transform: rotate(180deg);
+  color: var(--text-primary);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 290px;
+  background: rgba(11, 15, 25, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.15);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s ease;
+  z-index: 1050;
+}
+
+/* Invisible bridge so hover doesn't break between trigger and menu */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.is-open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--text-primary);
+  background: transparent;
+  transition: all 0.18s ease;
+  border: 1px solid transparent;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+  transform: translateX(3px);
+}
+
+.dropdown-item.active {
+  background: rgba(126, 163, 131, 0.16);
+  border-color: rgba(126, 163, 131, 0.35);
+}
+
+.dropdown-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.dropdown-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.dropdown-title {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.dropdown-desc {
+  font-size: 0.71rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+/* Botão de Crise em Destaque */
+.nav-crisis-highlight {
+  background: rgba(191, 97, 106, 0.12) !important;
+  border-color: rgba(191, 97, 106, 0.35) !important;
+  color: #ff9898 !important;
+  font-weight: 600 !important;
+}
+
+.nav-crisis-highlight:hover {
+  background: rgba(191, 97, 106, 0.25) !important;
+  border-color: rgba(191, 97, 106, 0.6) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px rgba(191, 97, 106, 0.3) !important;
+}
+
+/* Grupos do Drawer Mobile */
+.mobile-nav-group-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  padding: 0.85rem 0.5rem 0.2rem 0.5rem;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  margin-top: 0.4rem;
+}
+
+.mobile-nav-group-label:first-of-type {
+  border-top: none;
+  margin-top: 0;
+}
+
+.mobile-crisis-highlight {
+  background: rgba(191, 97, 106, 0.15) !important;
+  border: 1px solid rgba(191, 97, 106, 0.35) !important;
+  color: #ff9898 !important;
+  font-weight: 600 !important;
+}
+
 /* Mobile Drawer Overlay */
 .mobile-menu-overlay {
   position: fixed;
@@ -496,6 +656,66 @@ main {
 .section-subtitle {
   font-size: 1rem;
   color: var(--text-secondary);
+}
+/* Home page intro and categories */
+.intro-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  text-align: center;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+.intro-section h1 {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.home-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.home-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  width: 260px;
+  text-align: center;
+  transition: var(--transition-fast);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+.home-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+.card-badge {
+  display: inline-block;
+  background: var(--color-primary-glow);
+  color: var(--color-primary-light);
+  padding: 0.25rem 0.45rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.crisis-btn {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 600;
+  margin: 1rem auto;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+.crisis-btn:hover {
+  background: var(--color-primary-light);
 }
 
 /* ==========================================================================

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -29,7 +29,7 @@
   <!-- Sticky Top Header -->
   <header>
     <div class="header-inner">
-      <a href="#" class="logo" id="logo-el" onclick="navigateToSection('crisis-section'); return false;">
+      <a href="#" class="logo" id="logo-el" onclick="navigateToSection('home-section'); return false;">
         <div class="logo-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -45,22 +45,140 @@
         <span class="hamburger-bar"></span>
       </button>
 
-      <!-- Navegação Desktop -->
+      <!-- Navegação Desktop (Agrupada em Camadas) -->
       <nav class="nav-links desktop-nav">
-        <a href="#crisis-section" class="nav-link active" id="nav-crisis-btn">Protocolo de Crise</a>
-        <a href="#decision-section" class="nav-link" id="nav-decision-btn">Decisão Lógica</a>
-        <a href="#motivation-section" class="nav-link" id="nav-motivation-btn">Fisiologia & Foco</a>
-        <a href="#provocation-section" class="nav-link" id="nav-provocation-btn">Dignidade & Chat</a>
-        <a href="#complications-section" class="nav-link" id="nav-complications-btn">Pessoas Complicadas</a>
-        <a href="#hard-truths-section" class="nav-link" id="nav-hard-truths-btn">Verdades Duras</a>
-        <a href="#auto-analysis-section" class="nav-link" id="nav-auto-analysis-btn">Auto-análise</a>
-        <a href="#love-section" class="nav-link" id="nav-love-btn">Relacionamentos</a>
-        <a href="#philosophy-section" class="nav-link" id="nav-philosophy-btn">Filosofia de Vida</a>
-        <a href="#existential-dread-section" class="nav-link" id="nav-existential-dread-btn">Angústia Existencial</a>
-        <a href="#grief-section" class="nav-link" id="nav-grief-btn">Espaço do Luto</a>
-        <a href="#diary-section" class="nav-link" id="nav-diary-btn">Diário</a>
-        <a href="#credits-section" class="nav-link" id="nav-credits-btn">Créditos</a>
-        <a href="#app-install-section" class="nav-link" id="nav-app-install-btn">Atalho</a>
+        <a href="#home-section" class="nav-link active" id="nav-home-btn">Início</a>
+
+        <!-- Grupo: Pensar -->
+        <div class="nav-dropdown" data-dropdown="pensar">
+          <button class="nav-dropdown-trigger nav-link" type="button" aria-expanded="false">
+            <span>🧠 Pensar</span>
+            <span class="dropdown-chevron">▾</span>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#philosophy-section" class="dropdown-item">
+              <span class="dropdown-icon">🏛️</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Filosofia de Vida</span>
+                <span class="dropdown-desc">Dilemas, mitos e sabedoria atemporal</span>
+              </div>
+            </a>
+            <a href="#auto-analysis-section" class="dropdown-item">
+              <span class="dropdown-icon">🔍</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Auto-análise</span>
+                <span class="dropdown-desc">Identifique padrões e gatilhos mentais</span>
+              </div>
+            </a>
+            <a href="#existential-dread-section" class="dropdown-item">
+              <span class="dropdown-icon">🌌</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Angústia Existencial</span>
+                <span class="dropdown-desc">Vazio interior, rotina e o ciclo da fuga</span>
+              </div>
+            </a>
+            <a href="#motivation-section" class="dropdown-item">
+              <span class="dropdown-icon">⚡</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Fisiologia &amp; Foco</span>
+                <span class="dropdown-desc">Corpo, cérebro, energia e neurociência</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Grupo: Entender -->
+        <div class="nav-dropdown" data-dropdown="entender">
+          <button class="nav-dropdown-trigger nav-link" type="button" aria-expanded="false">
+            <span>👥 Entender</span>
+            <span class="dropdown-chevron">▾</span>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#love-section" class="dropdown-item">
+              <span class="dropdown-icon">❤️</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Relacionamentos</span>
+                <span class="dropdown-desc">Reciprocidade, afeto e conversas difíceis</span>
+              </div>
+            </a>
+            <a href="#complications-section" class="dropdown-item">
+              <span class="dropdown-icon">🤝</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Pessoas Complicadas</span>
+                <span class="dropdown-desc">Convívio, manipulação e limites saudáveis</span>
+              </div>
+            </a>
+            <a href="#provocation-section" class="dropdown-item">
+              <span class="dropdown-icon">🛡️</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Dignidade &amp; Chat</span>
+                <span class="dropdown-desc">Simulador de reações e posicionamento</span>
+              </div>
+            </a>
+            <a href="#decision-section" class="dropdown-item">
+              <span class="dropdown-icon">⚖️</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Decisão Lógica</span>
+                <span class="dropdown-desc">Estruture passos racionais sob incerteza</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Grupo: Atravessar -->
+        <div class="nav-dropdown" data-dropdown="atravessar">
+          <button class="nav-dropdown-trigger nav-link" type="button" aria-expanded="false">
+            <span>🌑 Atravessar</span>
+            <span class="dropdown-chevron">▾</span>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#grief-section" class="dropdown-item">
+              <span class="dropdown-icon">🕯️</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Espaço do Luto</span>
+                <span class="dropdown-desc">Acolhimento para perdas, saudades e ausências</span>
+              </div>
+            </a>
+            <a href="#hard-truths-section" class="dropdown-item">
+              <span class="dropdown-icon">💡</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Verdades Duras</span>
+                <span class="dropdown-desc">Reflexões cruas e diretas sobre a realidade</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="#diary-section" class="nav-link" id="nav-diary-btn">📓 Diário</a>
+
+        <!-- Grupo: Mais -->
+        <div class="nav-dropdown" data-dropdown="mais">
+          <button class="nav-dropdown-trigger nav-link" type="button" aria-expanded="false">
+            <span>⋯ Mais</span>
+            <span class="dropdown-chevron">▾</span>
+          </button>
+          <div class="nav-dropdown-menu" style="min-width: 220px;">
+            <a href="#credits-section" class="dropdown-item">
+              <span class="dropdown-icon">✨</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Créditos</span>
+                <span class="dropdown-desc">Autoria e referências</span>
+              </div>
+            </a>
+            <a href="#app-install-section" class="dropdown-item">
+              <span class="dropdown-icon">📲</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Atalho / App</span>
+                <span class="dropdown-desc">Instale no celular ou PC</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Botão Crise Destacado -->
+        <a href="#crisis-section" class="nav-link nav-crisis-highlight" id="nav-crisis-btn">
+          <span>🚨</span> Crise
+        </a>
       </nav>
     </div>
   </header>
@@ -80,17 +198,28 @@
         <button class="mobile-menu-close" id="mobile-menu-close-btn" aria-label="Fechar Menu">✕</button>
       </div>
       <div class="mobile-nav-links">
-        <a href="#crisis-section" class="mobile-nav-link active"><span class="mobile-nav-icon">🚨</span> Protocolo de Crise</a>
-        <a href="#decision-section" class="mobile-nav-link"><span class="mobile-nav-icon">⚖️</span> Decisão Lógica</a>
-        <a href="#motivation-section" class="mobile-nav-link"><span class="mobile-nav-icon">⚡</span> Fisiologia & Foco</a>
-        <a href="#provocation-section" class="mobile-nav-link"><span class="mobile-nav-icon">🛡️</span> Dignidade & Chat</a>
-        <a href="#complications-section" class="mobile-nav-link"><span class="mobile-nav-icon">🤝</span> Pessoas Complicadas</a>
-        <a href="#hard-truths-section" class="mobile-nav-link"><span class="mobile-nav-icon">💡</span> Verdades Duras</a>
-        <a href="#auto-analysis-section" class="mobile-nav-link"><span class="mobile-nav-icon">🔍</span> Auto-análise</a>
-        <a href="#love-section" class="mobile-nav-link"><span class="mobile-nav-icon">❤️</span> Relacionamentos</a>
+        <a href="#home-section" class="mobile-nav-link active"><span class="mobile-nav-icon">🏠</span> Início</a>
+
+        <div class="mobile-nav-group-label">🧠 PARA PENSAR</div>
         <a href="#philosophy-section" class="mobile-nav-link"><span class="mobile-nav-icon">🏛️</span> Filosofia de Vida</a>
+        <a href="#auto-analysis-section" class="mobile-nav-link"><span class="mobile-nav-icon">🔍</span> Auto-análise</a>
         <a href="#existential-dread-section" class="mobile-nav-link"><span class="mobile-nav-icon">🌌</span> Angústia Existencial</a>
+        <a href="#motivation-section" class="mobile-nav-link"><span class="mobile-nav-icon">⚡</span> Fisiologia &amp; Foco</a>
+
+        <div class="mobile-nav-group-label">👥 PARA ENTENDER</div>
+        <a href="#love-section" class="mobile-nav-link"><span class="mobile-nav-icon">❤️</span> Relacionamentos</a>
+        <a href="#complications-section" class="mobile-nav-link"><span class="mobile-nav-icon">🤝</span> Pessoas Complicadas</a>
+        <a href="#provocation-section" class="mobile-nav-link"><span class="mobile-nav-icon">🛡️</span> Dignidade &amp; Chat</a>
+        <a href="#decision-section" class="mobile-nav-link"><span class="mobile-nav-icon">⚖️</span> Decisão Lógica</a>
+
+        <div class="mobile-nav-group-label">🌑 PARA ATRAVESSAR</div>
         <a href="#grief-section" class="mobile-nav-link"><span class="mobile-nav-icon">🕯️</span> Espaço do Luto</a>
+        <a href="#hard-truths-section" class="mobile-nav-link"><span class="mobile-nav-icon">💡</span> Verdades Duras</a>
+
+        <div class="mobile-nav-group-label">🚨 SUPORTE IMEDIATO</div>
+        <a href="#crisis-section" class="mobile-nav-link mobile-crisis-highlight"><span class="mobile-nav-icon">🚨</span> Protocolo de Crise</a>
+
+        <div class="mobile-nav-group-label">🛠️ FERRAMENTAS &amp; MAIS</div>
         <a href="#diary-section" class="mobile-nav-link"><span class="mobile-nav-icon">📓</span> Diário Pessoal</a>
         <a href="#credits-section" class="mobile-nav-link"><span class="mobile-nav-icon">✨</span> Créditos</a>
         <a href="#app-install-section" class="mobile-nav-link"><span class="mobile-nav-icon">📲</span> Atalho</a>
@@ -157,8 +286,63 @@
   <!-- Main Content Container -->
   <main class="container">
 
-    <!-- SEÇÃO 1: PROTOCOLO DE CRISE (ABA INICIAL) -->
-    <section class="section-block active-section" id="crisis-section">
+    <!-- SEÇÃO 0: INÍCIO / APRESENTAÇÃO -->
+    <section class="section-block active-section" id="home-section">
+      <div class="intro-section">
+        <h1>Você chegou até aqui. Isso já significa alguma coisa.</h1>
+        <p>Talvez você tenha chegado aqui procurando uma resposta.</p>
+        <p>Talvez esteja passando por um momento difícil.</p>
+        <p>Talvez só esteja curioso.</p>
+        <p>Ou talvez nem saiba exatamente por que abriu esta página.</p>
+        <p>Não importa.</p>
+        <p><strong>Você está aqui.</strong></p>
+        <p>Este site nasceu de uma ideia simples: criar um espaço para falar sobre coisas que muitas vezes sentimos, pensamos ou enfrentamos, mas que nem sempre conseguimos colocar em palavras.</p>
+        <p>Aqui você não vai encontrar apenas conteúdos sobre ansiedade ou momentos de crise.</p>
+        <p>Existem reflexões sobre <strong>medo, vergonha, solidão, relacionamentos, vícios, procrastinação, emoções, comportamento, filosofia, escolhas, sofrimento, felicidade e as contradições de ser humano.</strong></p>
+        <p>Também existem histórias, mitos, filosofias e obras de ficção que podem parecer apenas entretenimento, mas que escondem perguntas muito maiores sobre nós mesmos.</p>
+        <p>Porque às vezes uma história consegue explicar alguma coisa sobre nós que uma explicação direta nunca conseguiria.</p>
+      </div>
+
+      <div class="home-categories">
+        <a class="home-card" href="#motivation-section">
+          <div class="card-badge">🧠</div>
+          <h3>Mente &amp; Corpo</h3>
+          <p>Entenda um pouco mais sobre ansiedade, emoções, cérebro, fisiologia, foco, hábitos e aquilo que acontece dentro de nós.</p>
+        </a>
+        <a class="home-card" href="#crisis-section">
+          <div class="card-badge">🌧️</div>
+          <h3>Momentos difíceis</h3>
+          <p>Conteúdos para aqueles momentos em que tudo parece pesado demais — incluindo crises, desespero, angústia e a sensação de não saber o que fazer.</p>
+        </a>
+        <a class="home-card" href="#love-section">
+          <div class="card-badge">👥</div>
+          <h3>Pessoas &amp; Relações</h3>
+          <p>Reflexões sobre relacionamentos, conflitos, pessoas difíceis, limites, rejeição, solidão e as complicações de conviver com outras pessoas.</p>
+        </a>
+        <a class="home-card" href="#philosophy-section">
+          <div class="card-badge">🏛️</div>
+          <h3>Filosofia</h3>
+          <p>Ideias que atravessaram séculos e continuam fazendo perguntas que talvez ainda não tenhamos conseguido responder.</p>
+        </a>
+        <a class="home-card" href="#philosophy-section">
+          <div class="card-badge">🎬</div>
+          <h3>Histórias &amp; Animações</h3>
+          <p>Reflexões inspiradas em histórias, animações e personagens que, por trás do humor ou da ficção, conseguem falar sobre coisas extremamente humanas.</p>
+        </a>
+        <a class="home-card" href="#hard-truths-section">
+          <div class="card-badge">💭</div>
+          <h3>Reflexões</h3>
+          <p>Textos para simplesmente parar e pensar. Sem precisar chegar a uma conclusão.</p>
+        </a>
+      </div>
+
+      <div style="text-align: center; margin: 2.5rem 0 1.5rem 0;">
+        <a class="crisis-btn" href="#crisis-section">Estou passando por um momento difícil →</a>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 1: PROTOCOLO DE CRISE -->
+    <section class="section-block" id="crisis-section">
       <div class="section-header">
         <span class="section-tag">Ação Imediata</span>
         <h2 class="section-title">Protocolo de Crise</h2>
@@ -5185,7 +5369,44 @@
               </p>
             </div>
 
-                        <!-- Ludoviajante -->
+            <!-- Rick and Morty -->
+            <div style="background: rgba(255,255,255,0.015); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 0.75rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                <h4 style="font-family: var(--font-title); font-size: 1.05rem; font-weight: 700; color: #ffffff; margin: 0;">Rick and Morty</h4>
+                <a href="https://www.adultswim.com/videos/rick-and-morty" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.65rem; font-size: 0.75rem; border-radius: 4px;">
+                  Adult Swim ↗
+                </a>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                <strong>Criadores:</strong> Justin Roiland e Dan Harmon.<br>
+                A série é utilizada neste projeto como uma obra de ficção e comédia para refletir sobre temas como identidade, morte, escolhas, relacionamentos, insignificância, medo, felicidade, trauma, dependência emocional e a busca por significado.
+              </p>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                As reflexões desenvolvidas no site não pretendem interpretar toda a série como uma obra filosófica. Muitos episódios existem principalmente pelo humor, absurdo e entretenimento. Quando determinados acontecimentos ou personagens levantam questões humanas interessantes, eles são utilizados apenas como ponto de partida para reflexão.
+              </p>
+              
+              <div style="background: rgba(255, 255, 255, 0.02); padding: 0.85rem 1rem; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+                <strong style="color: #ffffff; display: block; margin-bottom: 0.35rem;">Referências utilizadas nas reflexões:</strong>
+                <ul style="padding-left: 1.25rem; margin: 0; display: flex; flex-direction: column; gap: 0.25rem;">
+                  <li>Rick Sanchez e sua relação com Morty.</li>
+                  <li>Morty e o medo de ser substituível.</li>
+                  <li>Evil Morty e a busca por autonomia e liberdade.</li>
+                  <li>Rick, Diane e a relação entre luto, vingança e vazio.</li>
+                  <li>O uso de álcool e outras formas de fuga como tentativa de escapar da dor.</li>
+                  <li>A dificuldade de Rick em aceitar felicidade e vulnerabilidade.</li>
+                  <li>Identidade, versões alternativas e a pergunta sobre o que torna alguém "a mesma pessoa".</li>
+                  <li>A ideia de que alguém pode ser importante sem ser insubstituível.</li>
+                </ul>
+              </div>
+
+              <div style="background: rgba(126, 163, 131, 0.05); border-left: 3px solid var(--color-primary-light); padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55;">
+                <strong style="color: #ffffff;">Episódio utilizado como referência específica:</strong><br>
+                <em>Fear No Mort</em> — Temporada 7, Episódio 10.<br>
+                Utilizado principalmente nas reflexões sobre o medo de ser substituível, o medo da felicidade, a vulnerabilidade e a aceitação da incerteza.
+              </div>
+            </div>
+
+            <!-- Ludoviajante -->
             <div style="background: rgba(255,255,255,0.015); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 0.5rem;">
               <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
                 <h4 style="font-family: var(--font-title); font-size: 1.05rem; font-weight: 700; color: #ffffff; margin: 0;">Ludoviajante — YouTube</h4>
@@ -5206,6 +5427,21 @@
               </p>
             </div>
 
+          </div>
+        </div>
+
+        <!-- Bloco: Personagens e Situações de Ficção -->
+        <div class="glass-card" style="border-left: 4px solid var(--color-secondary); display: flex; flex-direction: column; gap: 1rem;">
+          <h3 style="font-family: var(--font-title); font-size: 1.35rem; font-weight: 700; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🎭</span> Personagens e Situações de Ficção
+          </h3>
+
+          <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65; margin: 0;">
+            Algumas reflexões do site partem de personagens ou situações específicas de obras de ficção. Nesses casos, a intenção não é afirmar que a interpretação apresentada representa oficialmente a obra ou a visão de seus criadores.
+          </p>
+
+          <div style="background: rgba(255, 255, 255, 0.02); padding: 1rem; border-radius: var(--radius-sm); border: 1px dashed var(--border-color); font-size: 0.95rem; font-weight: 600; color: var(--text-primary); text-align: center;">
+            ✨ A reflexão é autoral. A obra é o ponto de partida.
           </div>
         </div>
 

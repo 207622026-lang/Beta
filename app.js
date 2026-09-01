@@ -32,8 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   Navigation (SPA Tabs)
+   Navigation (SPA Tabs & Dropdown Layers)
    ========================================================================== */
+function closeAllDropdowns() {
+  document.querySelectorAll('.nav-dropdown.is-open').forEach(dropdown => {
+    dropdown.classList.remove('is-open');
+    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  });
+}
+
 function navigateToSection(targetId) {
   if (!targetId) return;
   
@@ -45,12 +53,20 @@ function navigateToSection(targetId) {
     }
   });
 
-  const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+  // Reset all nav links, dropdown items, and triggers
+  const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .dropdown-item');
   allNavLinks.forEach(link => {
     link.classList.remove('active');
     const href = link.getAttribute('href');
     if (href && href.slice(1) === targetId) {
       link.classList.add('active');
+      
+      // If inside a dropdown, highlight the parent trigger button
+      const parentDropdown = link.closest('.nav-dropdown');
+      if (parentDropdown) {
+        const trigger = parentDropdown.querySelector('.nav-dropdown-trigger');
+        if (trigger) trigger.classList.add('active');
+      }
     }
   });
 
@@ -58,7 +74,8 @@ function navigateToSection(targetId) {
     backToPhilosophyIndex();
   }
 
-  // Close mobile drawer if open
+  // Close all dropdowns and mobile drawer
+  closeAllDropdowns();
   closeMobileMenu();
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -66,7 +83,30 @@ function navigateToSection(targetId) {
 }
 
 function initNavigation() {
+  // Handle dropdown toggle buttons
   document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.nav-dropdown-trigger');
+    if (trigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      const parent = trigger.closest('.nav-dropdown');
+      const wasOpen = parent.classList.contains('is-open');
+      
+      closeAllDropdowns();
+      
+      if (!wasOpen) {
+        parent.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+      return;
+    }
+
+    // Close dropdowns when clicking outside
+    if (!e.target.closest('.nav-dropdown')) {
+      closeAllDropdowns();
+    }
+
+    // Handle internal anchor navigation
     const anchor = e.target.closest('a');
     if (!anchor) return;
 
